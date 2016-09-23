@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  author: MyText
+  canonical_url: MyText
+  cook_time: MyText
+  description: MyText
+  ingredients: MyText
+  instructions: MyText
+  name: MyText
+  prep_time: MyText
+  total_time: MyText
+  yield: MyText
+
+two:
+  author: MyText
+  canonical_url: MyText
+  cook_time: MyText
+  description: MyText
+  ingredients: MyText
+  instructions: MyText
+  name: MyText
+  prep_time: MyText
+  total_time: MyText
+  yield: MyText

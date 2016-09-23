@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+<p><%= link_to 'Back', recipes_path %></p>
+<article class="recipe">
+  <header>
+    <h1><%= @recipe.name %></h1>
+    <dl class="meta">
+      <%= definition "Author", @recipe.author %>
+      <%= definition "Prep time", @recipe.prep_time %>
+      <%= definition "Cook time", @recipe.cook_time %>
+      <%= definition "Total time", @recipe.total_time %>
+      <%= definition "Yield", @recipe.yield %>
+    </dl>
+  <hr>
+  </header>
+  <!--<section class="description">
+    <p><%= @recipe.description %></p>
+    <hr>
+  </section>-->
+
+  <section class="ingredients">
+    <strong>Ingredients</strong>
+    <ul>
+    <% @recipe.ingredients.split("\n").each do |ingredient| %>
+      <li><%= ingredient %></li>
+    <% end %>
+    </ul>
+  </section>
+
+  <section class="instructions">
+    <strong>Instructions</strong>
+    <ul>
+    <% @recipe.instructions.gsub(/\r/, "").split(/\n{2,}/).each_with_index do |step, index| %>
+      <li><strong>Step <%= index + 1 %></strong><br> <%= step %></li>
+    <% end %>
+    </ul>
+  </section>
+
+  <footer>
+    <p><%= link_to "Source", @recipe.canonical_url %></p>
+
+    <hr>
+
+    <p><%= link_to 'Edit', edit_recipe_path(@recipe) %></p>
+  </footer>
+</article

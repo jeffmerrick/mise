@@ -1,0 +1,52 @@
+main {
+  @include outer-container;
+}
+
+.hide {
+  display:none;
+}
+
+article.recipe {
+  header, footer, .description {
+    @include span-columns(12);
+    @include omega();
+  }
+
+  dl.meta {
+    margin-bottom:15px;
+    dt, dd {
+      display:inline-block;
+    }
+    dt {margin-right:5px;}
+    dd {margin-right:15px;}
+  }
+
+  section {
+    &.ingredients {
+      @include span-columns(3);
+      ul {
+        li {
+          border-bottom:1px solid $light-gray;
+          padding:15px 0;
+          font-size:1.25em;;
+          &:last-child {
+            border-bottom:none;
+          }
+        }
+      }
+    }
+    &.instructions {
+      @include span-columns(9);
+      @include omega();
+      li {
+        font-size:1.25em;
+        padding:15px 0 30px 0;
+        span {
+          font-size:1.75em;
+          font-weight:bold;
+        }
+      }
+    }
+  }
+
+}

@@ -1,0 +1,12 @@
+<p id="notice"><%= notice %></p>
+
+  <ul class="recipes">
+    <% @recipes.each do |recipe| %>
+      <li>
+        <h1><%= link_to recipe.name, recipe %></h1>
+      </li>
+    <% end %>
+  </ul>
+
+<hr>
+<%= link_to 'New Recipe', new_recipe_path, class: "btn" %>

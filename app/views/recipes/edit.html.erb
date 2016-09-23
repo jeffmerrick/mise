@@ -1,0 +1,9 @@
+<h1>Editing Recipe</h1>
+
+<%= render 'form' %>
+<hr>
+<p>
+  <%= link_to 'Back to recipes', recipes_path %> |
+  <%= link_to 'View', @recipe %> |
+  <%= link_to 'Delete', @recipe , method: :delete, data: { confirm: 'Are you sure?' } %>
+</p>
