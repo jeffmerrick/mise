@@ -9,11 +9,10 @@
     <% end %>
     <div id="form-details" class="<%= "hide" if @recipe.new_record? %>">
       <%= f.input :name %>
+      <%= render "text_helper" %>
       <%= f.input :description, input_html: {rows: 10} %>
       <%= f.input :ingredients, input_html: {rows: 20}, hint: "One per line, create sections by prepending with ##" %>
-      <div class="text-helpers pull-right">
-        <a class="remove-double-spaces" href="javascript:void(0)">- double spaces</a>
-      </div>
+      <%= render "text_helper" %>
       <%= f.input :instructions, input_html: {rows: 20}, hint: "Use double line breaks to create separate steps. Remove step numbers." %>
       <%= f.input :cook_time %>    
       <%= f.input :author %>    

@@ -45,9 +45,16 @@ $(function() {
   $(".remove-double-spaces").on("click", function(){
     var $textarea = $(this).parent().next(".text").find("textarea");
     var instructions = $textarea.val();
-    console.log(instructions.replace("  ", ""));
     $textarea.val(instructions.replace(/  +/g, ""));
   });
+
+  $(".remove-line-breaks").on("click", function(){
+    var $textarea = $(this).parent().next(".text").find("textarea");
+    var instructions = $textarea.val();
+    $textarea.val(instructions.replace(/(\r\n|\n|\r)/gm,""));
+  });
+
+
 
   if($(".ingredients").length) {
     var sticky = new Waypoint.Sticky({
