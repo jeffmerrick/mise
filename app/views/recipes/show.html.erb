@@ -10,18 +10,17 @@
       <%= definition "Total time", @recipe.total_time %>
       <%= definition "Yield", @recipe.yield %>
     </dl>
-  <hr>
   </header>
-  <!--<section class="description">
+  <section class="description">
     <p><%= @recipe.description %></p>
     <hr>
-  </section>-->
+  </section>
 
   <section class="ingredients">
     <strong>Ingredients</strong>
     <ul>
     <% @recipe.ingredients.split("\n").each do |ingredient| %>
-      <li><%= ingredient %></li>
+      <%= ingredient_formatter(ingredient) %>
     <% end %>
     </ul>
   </section>
@@ -30,16 +29,20 @@
     <strong>Instructions</strong>
     <ul>
     <% @recipe.instructions.gsub(/\r/, "").split(/\n{2,}/).each_with_index do |step, index| %>
-      <li><strong>Step <%= index + 1 %></strong><br> <%= step %></li>
+      <li data-step="<%= index + 1 %>" id="s-<%= index + 1 %>" class="step"><strong>Step <%= index + 1 %></strong><br> <%= step %></li>
     <% end %>
     </ul>
+
+    <footer>
+      <p>
+        <%= link_to "Source website", @recipe.canonical_url, target: "_blank" %> |
+        <%= link_to 'Edit', edit_recipe_path(@recipe) %>
+      </p>
+    </footer>
+
   </section>
-
-  <footer>
-    <p><%= link_to "Source", @recipe.canonical_url %></p>
-
-    <hr>
-
-    <p><%= link_to 'Edit', edit_recipe_path(@recipe) %></p>
-  </footer>
+  <nav class="pager">
+    <a href="#" id="prev" class="btn btn-outline disabled">Prev</a>
+    <a href="#s-1" id="next" class="btn btn-outline">Next</a>
+  </nav>
 </article

@@ -39,6 +39,11 @@ a {
     color: shade($action-color, 25%);
     text-decoration:underline;
   }
+  &.disabled {
+    pointer-events:none;
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
 }
 
 hr {
