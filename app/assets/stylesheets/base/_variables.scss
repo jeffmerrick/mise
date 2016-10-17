@@ -7,7 +7,7 @@ $base-font-family: "Arimo", sans-serif;
 $heading-font-family: $base-font-family;
 
 // Font Sizes
-$base-font-size: 1.5em;
+$base-font-size: 1em;
 
 // Line height
 $base-line-height: 1.5;
@@ -25,10 +25,12 @@ $blue: #1565c0;
 $dark-gray: #333;
 $medium-gray: #999;
 $light-gray: #ddd;
+$red: #d01111;
 
 // Font Colors
 $base-font-color: #000;
 $action-color: #000;
+$error-color: $red;
 
 // Border
 $base-border-color: $light-gray;

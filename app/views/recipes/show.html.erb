@@ -1,9 +1,14 @@
 <p id="notice"><%= notice %></p>
-<p>
-  <%= link_to 'Back', recipes_path %> |
-  <%= link_to 'Edit', edit_recipe_path(@recipe) %> |
-  <%= link_to "Source website", @recipe.canonical_url, target: "_blank" %>
-</p>
+<div class="toolbar">
+  <span class="toolbar-item">
+    <%= link_to icon("arrow_back").html_safe, recipes_path, class: "btn btn-outline" %>
+  </span>
+  <span class="toolbar-item">
+    <%= link_to icon("edit") + " Edit", edit_recipe_path(@recipe), class: "btn btn-link" %>
+    <%= link_to icon("link") + "Source", @recipe.canonical_url, target: "_blank", class: "btn btn-link" %>
+  </span>
+</div>
+<hr>
 <article class="recipe">
   <header>
     <h1><%= @recipe.name %></h1>
@@ -38,8 +43,8 @@
     <% end %>
     </ul>
     <nav class="pager">
-      <a href="#" id="prev" class="btn btn-outline disabled">Prev</a>
-      <a href="#s-1" id="next" class="btn btn-outline">Next</a>
+      <a href="#" id="prev" class="btn btn-outline disabled"><%= icon("arrow_upward", 48) %></a>
+      <a href="#s-1" id="next" class="btn btn-outline"><%= icon("arrow_downward", 48) %></a>
     </nav>    
   </section>
 

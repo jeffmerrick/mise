@@ -12,6 +12,8 @@ main {
 }
 
 .show-iframe {
+  padding:0;
+
   main {
     width:50vw;
     padding-right:30px;
@@ -32,6 +34,10 @@ main {
   background:#000;
   padding:15px;
   color:#fff;
+}
+
+.error_notification {
+  color:$error-color;
 }
 
 .hide {
@@ -140,3 +146,31 @@ article.recipe {
 
 }
 
+.toolbar {
+  display:flex;
+  .toolbar-item {
+    display:flex;
+    flex:1 1 auto;
+    align-items: center;
+    &:last-child {
+      justify-content: flex-end;
+      text-align:right;
+    }
+  }
+}
+
+/* Rules for sizing the icon. */
+.material-icons {
+  text-overfow:hidden;
+  vertical-align:middle;
+  &.md-18 { font-size: 18px; max-width:18px; }
+  &.md-24 { font-size: 24px; max-width:24px }
+  &.md-36 { font-size: 36px; max-width:36px }
+  &.md-48 { font-size: 48px; max-width:48px }
+}
+
+.btn, a {
+  .icon {
+    margin-top:-1px;
+  }
+}

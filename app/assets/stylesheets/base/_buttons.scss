@@ -8,7 +8,7 @@
   cursor: pointer;
   display: inline-block;
   font-family: $base-font-family;
-  font-size: $base-font-size;
+  font-size: $base-font-size * 1.15;
   -webkit-font-smoothing: antialiased;
   font-weight: bold;
   line-height: 1;
@@ -43,5 +43,10 @@
       background-color:$action-color;
       color:#fff;
     }
+  }
+  &.btn-link {
+    background:transparent;
+    border-color:transparent;
+    color:$action-color;
   }
 }

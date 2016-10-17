@@ -2,10 +2,11 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :canonical_url, label: "URL" %>
+    <%= f.input :canonical_url, label: @recipe.new_record? ? icon("cloud_download") + " Import URL" : "URL" %>
     <hr>
     <% if @recipe.new_record? %> 
-      <p><a href="#form-details" data-toggle="collapse">Or enter manually</a></p>
+      <p><a href="#form-details" data-toggle="collapse"><%= icon("keyboard") %> Or enter manually</a></p>
+      <hr>
     <% end %>
     <div id="form-details" class="<%= "hide" if @recipe.new_record? %>">
       <%= f.input :name %>
@@ -23,6 +24,6 @@
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, "Save Recipe" %>
   </div>
 <% end %>

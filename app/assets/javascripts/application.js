@@ -34,11 +34,11 @@ $(function() {
     if (typeof attr !== typeof undefined && attr !== false) {
       $("#source").removeAttr("src");
       $("body").removeClass("show-iframe");
-      $(this).html("Show source website");
+      $(this).find("span").html("Show source website");
     } else {
       $("#source").attr("src", $(this).attr("href"));
       $("body").addClass("show-iframe");
-      $(this).html("Hide source website");
+      $(this).find("span").html("Hide source website");
     }
   });
 

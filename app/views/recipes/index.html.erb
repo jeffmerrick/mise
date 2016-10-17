@@ -1,10 +1,10 @@
 <p id="notice"><%= notice %></p>
 <%= form_tag(recipes_path, :method => "get", id: "search-form") do %>
   <div class="input-search">
-    <%= link_to "&times;".html_safe, "/", class: "clear-search" if params[:search].present? %>
+    <%= link_to icon("clear").html_safe, "/", class: "clear-search" if params[:search].present? %>
     <%= text_field_tag :search, params[:search], placeholder: "Search recipes" %>
   </div>
-  <%= submit_tag "Search", class:"btn-outline" %>
+  <%= button_tag icon("search").html_safe, class:"btn-outline" %>
 <% end %>
 <% if @recipes.present? %>
   <ul class="recipes">
@@ -14,8 +14,10 @@
       </li>
     <% end %>
   </ul>
-<% else %>
+<% elsif params[:search].present? %>
   <h1>No results for <em><%= params[:search] %></em></h1>
+<% else %>
+  <h1>No recipes created yet</h1>
 <% end %>
 <hr>
-<%= link_to 'New Recipe', new_recipe_path, class: "btn" %>
+<%= link_to icon('add')+" New Recipe", new_recipe_path, class: "btn" %>

@@ -1,14 +1,15 @@
 class RecipesController < ApplicationController
   before_action :set_recipe, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
+  
   # GET /recipes
   # GET /recipes.json
   def index
-    @recipes = Recipe.all
+    @recipes = current_user.recipes
     if params[:search]
-      @recipes = Recipe.search(params[:search]).order("created_at DESC")
+      @recipes = current_user.recipes.search(params[:search]).order("created_at DESC")
     else
-      @recipes = Recipe.all.order('created_at DESC')
+      @recipes = current_user.recipes
     end
   end
 
@@ -19,7 +20,7 @@ class RecipesController < ApplicationController
 
   # GET /recipes/new
   def new
-    @recipe = Recipe.new
+    @recipe = current_user.recipes.new
   end
 
   # GET /recipes/1/edit
@@ -29,7 +30,7 @@ class RecipesController < ApplicationController
   # POST /recipes
   # POST /recipes.json
   def create
-    @recipe = Recipe.new(recipe_params)
+    @recipe = current_user.recipes.new(recipe_params)
     unless @recipe.canonical_url.empty?
       require 'open-uri'
       recipe_url = @recipe.canonical_url
