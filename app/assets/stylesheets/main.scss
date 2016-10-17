@@ -1,3 +1,7 @@
+body {
+  padding:0 30px;
+}
+
 main {
   @include outer-container;
   padding-top:15px;
@@ -76,7 +80,7 @@ article.recipe {
   }
 
   .sticky-wrapper {
-    @include span-columns(4);
+    @include span-columns(5);
   }
 
   section {
@@ -87,12 +91,12 @@ article.recipe {
   }
 
   .ingredients {
+    width:100%;
     &.stuck {
-      @include span-columns(4);
       position:fixed;
       top:0;
       max-height:100vh;
-      max-width:381px;
+      max-width:468px;
       overflow-y:auto;
     }
     ul {
@@ -108,10 +112,10 @@ article.recipe {
     }
   }
   .instructions {
-    @include span-columns(8);
+    @include span-columns(7);
     @include omega();
     li.step {
-      font-size:1.5em;
+      font-size:1.25em;
       padding:15px 0 30px 0;
       min-height:33vh;
 
@@ -125,15 +129,14 @@ article.recipe {
     }
   }
 
-    nav.pager {
-      position:fixed;
-      bottom:15px;
-      right:15px;
-      .btn {
-        font-size:16px;
-        background:#fff;
-      }
+  nav.pager {
+    position:fixed;
+    bottom:15px;
+    right:15px;
+    .btn {
+      font-size:1em;
     }
+  }
 
 }
 

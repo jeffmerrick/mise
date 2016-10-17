@@ -55,7 +55,6 @@ $(function() {
   });
 
 
-
   if($(".ingredients").length) {
     var sticky = new Waypoint.Sticky({
       element: $(".ingredients")[0]
@@ -98,6 +97,5 @@ $(function() {
     });
 
   });
-
 
 });
