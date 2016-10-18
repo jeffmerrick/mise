@@ -5,7 +5,6 @@ gem "sass-rails", "~> 5.0"
 gem "uglifier", ">= 1.3.0"
 gem "coffee-rails", "~> 4.1.0"
 gem "jquery-rails"
-gem "jbuilder", "~> 2.0"
 gem "autoprefixer-rails"
 gem "thin", require: false
 
@@ -25,6 +24,7 @@ gem "bitters"
 gem "hangry"
 gem "ingreedy"
 gem "devise"
+gem "acts-as-taggable-on"
 
 group :development do
   gem "better_errors"

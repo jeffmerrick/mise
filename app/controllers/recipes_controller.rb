@@ -3,7 +3,6 @@ class RecipesController < ApplicationController
   before_action :authenticate_user!
   
   # GET /recipes
-  # GET /recipes.json
   def index
     @recipes = current_user.recipes
     if params[:search]
@@ -14,7 +13,6 @@ class RecipesController < ApplicationController
   end
 
   # GET /recipes/1
-  # GET /recipes/1.json
   def show
   end
 
@@ -28,7 +26,6 @@ class RecipesController < ApplicationController
   end
 
   # POST /recipes
-  # POST /recipes.json
   def create
     @recipe = current_user.recipes.new(recipe_params)
     unless @recipe.canonical_url.empty?
@@ -53,10 +50,8 @@ class RecipesController < ApplicationController
     respond_to do |format|
       if @recipe.save
         format.html { redirect_to edit_recipe_path(@recipe), notice: 'Recipe was successfully created.' }
-        format.json { render :show, status: :created, location: @recipe }
       else
         format.html { render :new }
-        format.json { render json: @recipe.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -67,10 +62,8 @@ class RecipesController < ApplicationController
     respond_to do |format|
       if @recipe.update(recipe_params)
         format.html { redirect_to @recipe, notice: 'Recipe was successfully updated.' }
-        format.json { render :show, status: :ok, location: @recipe }
       else
         format.html { render :edit }
-        format.json { render json: @recipe.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -81,7 +74,6 @@ class RecipesController < ApplicationController
     @recipe.destroy
     respond_to do |format|
       format.html { redirect_to recipes_url, notice: 'Recipe was successfully deleted.' }
-      format.json { head :no_content }
     end
   end
 
