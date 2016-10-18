@@ -10,13 +10,28 @@
 </div>
 <hr>
 <% if @recipes.present? %>
-  <ul class="recipes">
-    <% @recipes.each do |recipe| %>
-      <li>
-        <h1><%= link_to recipe.name, recipe %></h1>
-      </li>
-    <% end %>
-  </ul>
+  <% if params[:search].present? %>
+      <ul class="recipes">
+      <% @recipes.each do |recipe| %>
+        <%= render recipe %>
+      <% end %>
+      </ul>
+  <% else %>
+    <ul class="tabs">
+      <% @categories.each_with_index do |category, index| %>
+        <li class="tab-header-and-content">
+          <a href="#" class="tab-link <%= "is-active" if index == 0 %>"><%= category.name %> (<%= category.taggings_count %>)</a>
+          <div class="tab-content">
+            <ul class="recipes">
+            <% @recipes.tagged_with(category.name).each do |recipe| %>
+              <%= render recipe %>
+            <% end %>
+            </ul>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
 <% elsif params[:search].present? %>
   <h1>No results for <em><%= params[:search] %></em></h1>
 <% else %>

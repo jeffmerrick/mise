@@ -9,10 +9,12 @@
  * compiled file so the styles you add here take precedence over styles defined in any styles
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
- *
+ *= require selectize
+ *= require selectize.default
  */
 
 @import "bourbon";
 @import "neat";
 @import "base/base";
+@import "tabs";
 @import "main";

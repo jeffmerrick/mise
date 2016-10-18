@@ -25,6 +25,7 @@ gem "hangry"
 gem "ingreedy"
 gem "devise"
 gem "acts-as-taggable-on"
+gem "selectize-rails"
 
 group :development do
   gem "better_errors"

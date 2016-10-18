@@ -1,0 +1,4 @@
+<h1><%= link_to icon("arrow_back").html_safe, :back, class: "btn btn-outline" %> Recipes tagged as <em><%= @tag.name %></em></h1>
+<ul class="recipes">
+  <%= render @recipes %>
+</ul>
