@@ -53,3 +53,11 @@ hr {
   border-top: 0;
   margin: $base-spacing 0;
 }
+
+.text-success {
+  color:$success-color;
+}
+
+.text-error {
+  color:$error-color;
+}

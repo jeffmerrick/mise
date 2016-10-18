@@ -7,6 +7,19 @@ main {
   padding-top:15px;
 }
 
+.page-centered {
+  margin-top:30px;
+  @include span-columns(6);
+  @include shift(3);
+  @include omega();
+}
+
+footer.user {
+  text-align:center;
+  @include span-columns(12);
+  @include omega();
+}
+
 #source {
   display:none;
 }
@@ -30,9 +43,15 @@ main {
   }
 }
 
-#notice:not(:empty) {
+.flash:not(:empty) {
+  &#notice {
+    background:$success-color;
+  }
+  &#alert {
+    background:$error-color;
+  }
   background:#000;
-  padding:15px;
+  padding:15px 30px;
   color:#fff;
 }
 
@@ -50,7 +69,8 @@ main {
 
 #search-form {
   display:flex;
-  padding-bottom:30px;
+  //padding-bottom:30px;
+  padding-right:30px;
   .input-search {
     position:relative;
     flex-grow:1;
@@ -146,6 +166,20 @@ article.recipe {
 
 }
 
+.home {
+  text-align:center;
+
+  h1 {
+    font-size:6em;
+  }
+  h2 {
+    font-size:4em;
+  }
+  .btn {
+    font-size:1.5em;
+  }
+}
+
 .toolbar {
   display:flex;
   .toolbar-item {
@@ -155,6 +189,9 @@ article.recipe {
     &:last-child {
       justify-content: flex-end;
       text-align:right;
+    }
+    &.btn {
+      flex:0 0 auto;
     }
   }
 }
