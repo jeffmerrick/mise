@@ -2,12 +2,7 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :canonical_url, label: @recipe.new_record? ? icon("cloud_download") + " Import URL" : "URL" %>
-    <hr>
-    <% if @recipe.new_record? %> 
-      <p><a href="#form-details" data-toggle="collapse" class="btn btn-outline"><%= icon("keyboard") %> Or enter manually</a></p>
-      <hr>
-    <% end %>
+    <%= f.input :canonical_url, label: @recipe.new_record? ? icon("cloud_download") + " Import URL " + link_to('...or enter manually', '#form-details', data: {toggle: 'collapse'}) : "URL" %>
     <div id="form-details" class="<%= "hide" if @recipe.new_record? %>">
       <%= f.input :name %>
       <%= render "text_helper" %>

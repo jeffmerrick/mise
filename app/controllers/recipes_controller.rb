@@ -32,26 +32,45 @@ class RecipesController < ApplicationController
     @current_user = current_user
     @recipe = current_user.recipes.new(recipe_params)
 
-    @current_user.tag(@recipe, on: :tags, with: params[:tag_list], skip_save: true)
-    @current_user.tag(@recipe, on: :categories, with: params[:category_list], skip_save: true)
-
     unless @recipe.canonical_url.empty?
-      require 'open-uri'
+      require "open-uri"
       recipe_url = @recipe.canonical_url
-      recipe_html_string = open(recipe_url).read
+      begin
+        recipe_html_string = open(recipe_url).read
 
-      require 'hangry'
-      recipe = Hangry.parse(recipe_html_string)
+        require "hangry"
+        recipe = Hangry.parse(recipe_html_string)
 
-      @recipe.author = recipe.author
-      @recipe.cook_time = recipe.cook_time
-      @recipe.description = recipe.description
-      @recipe.ingredients = recipe.ingredients.join("\n")
-      @recipe.instructions = recipe.instructions.gsub(/[^\S\n]/, " ")
-      @recipe.name = recipe.name
-      @recipe.prep_time = recipe.prep_time
-      @recipe.total_time = recipe.total_time
-      @recipe.yield = recipe.yield
+        @recipe.author = recipe.author
+        @recipe.cook_time = recipe.cook_time
+        @recipe.description = recipe.description
+        @recipe.ingredients = recipe.ingredients.join("\n")
+        @recipe.instructions = recipe.instructions.gsub(/[^\S\n]/, " ")
+        @recipe.name = recipe.name
+        @recipe.prep_time = recipe.prep_time
+        @recipe.total_time = recipe.total_time
+        @recipe.yield = recipe.yield
+
+        if params[:tag_list]
+          @current_user.tag(@recipe, on: :tags, with: params[:tag_list], skip_save: true)
+        else
+          ingredient_list = Array.new
+          require "ingreedy"
+          recipe.ingredients.each do |ingredient|
+            begin
+              parsed = Ingreedy.parse(ingredient)
+              ingredient_list.push(parsed.ingredient.to_s.downcase.gsub(/\(.*?\)/, ""))
+            rescue
+              # Skip
+            end
+          end
+          @current_user.tag(@recipe, on: :tags, with: ingredient_list, skip_save: true)
+        end
+      
+        @current_user.tag(@recipe, on: :categories, with: params[:category_list], skip_save: true)
+      rescue
+        # Need to figure out a better way
+      end
     end
 
     respond_to do |format|
