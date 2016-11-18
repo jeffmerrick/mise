@@ -3,7 +3,7 @@ $medium-screen: 600px;
 $large-screen: 900px;
 
 // Typography
-$base-font-family: "Arimo", sans-serif;
+$base-font-family: "Karla", sans-serif;
 $heading-font-family: $base-font-family;
 
 // Font Sizes
@@ -29,7 +29,8 @@ $red: #d01111;
 $green: #3ab559;
 // Font Colors
 $base-font-color: #000;
-$action-color: #000;
+$action-color: #0076FF;
+$link-color: $action-color;
 $error-color: $red;
 $success-color: $green;
 

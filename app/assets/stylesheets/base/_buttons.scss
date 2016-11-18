@@ -2,7 +2,7 @@
 .btn {
   appearance: none;
   background-color: $action-color;
-  border: 0;
+  border: 2px solid $action-color;
   border-radius: $base-border-radius;
   color: #fff;
   cursor: pointer;
@@ -36,7 +36,6 @@
   }
   &.btn-outline {
     background:#fff;
-    border:2px solid $action-color;
     color:$action-color;
     &:hover,
     &:focus {
