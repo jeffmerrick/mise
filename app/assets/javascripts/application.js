@@ -31,6 +31,7 @@ $(function() {
   $('.tabs').each(function(index) {
     $(this).children('li').first().children('a').addClass('is-active').next().addClass('is-open').show();
   });
+
   $('.tabs').on('click', 'li > a.tab-link', function(event) {
     if (!$(this).hasClass('is-active')) {
       event.preventDefault();
@@ -104,6 +105,36 @@ $(function() {
       $("#next").attr("href", "#s-"+ (activeStep + 1));
     }
   }
+
+  $(".instructions").on("click", function(){
+    s = window.getSelection();
+    var range = s.getRangeAt(0);
+    var node = s.anchorNode;
+    while (range.toString().indexOf(' ') != 0) {
+        range.setStart(node, (range.startOffset - 1));
+    }
+    range.setStart(node, range.startOffset + 1);
+    do {
+        range.setEnd(node, range.endOffset + 1);
+
+    } while (range.toString().indexOf(' ') == -1 && range.toString().trim() != '' && range.endOffset < node.length);
+    var str = range.toString().trim().replace(/[^A-Za-z ]+/g, '');
+    $(".instructions").unmark()
+    $(".ingredients").find("li").removeClass("highlight");
+    $(".ingredients").unmark().mark(str, {
+      accuracy: "partial"
+    });
+  });
+
+  $(".ingredients").find("li").on("click", function(){
+    var str = $(this).html().replace(/[^A-Za-z ]+/g, '').removeStopWords();
+    $(".ingredients").unmark();
+    $(".ingredients").find("li").removeClass("highlight");
+    $(this).addClass("highlight");
+    $(".instructions").unmark().mark(str, {
+      accuracy: "exact"
+    });
+  });  
 
   activeStep = 1;
   totalSteps = $(".step").length;

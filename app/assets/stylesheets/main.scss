@@ -129,11 +129,14 @@ article.recipe {
       margin-right:15px;
       li {
         border-bottom:1px solid $light-gray;
-        padding:15px 0;
+        padding:15px 0 15px 5px;
         font-size:1em;;
         &:last-child {
           border-bottom:none;
         }
+        &.highlight {
+          background-color:yellow;
+        }        
       }
     }
   }

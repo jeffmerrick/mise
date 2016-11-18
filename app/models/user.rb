@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   belongs_to :book
   has_many :recipes, through: :book
 
-  after_create :generate_book
+  before_create :generate_book
 
   private
 

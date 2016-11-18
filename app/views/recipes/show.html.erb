@@ -17,18 +17,6 @@
       <%= definition "Cook time", @recipe.cook_time %>
       <%= definition "Total time", @recipe.total_time %>
       <%= definition "Yield", @recipe.yield %>
-      <dt>Tags</dt>
-        <dd>
-        <% @recipe.owner_tags_on(current_user, :tags).each_with_index do |tag, index| %>
-          <%= link_to tag.name, tag_path(tag) %><%= "," if index+1 != @recipe.owner_tags_on(current_user, :tags).length %>
-        <% end %>
-        </dd>
-      <dt>Categorization</dt>
-        <dd>
-        <% @recipe.owner_tags_on(current_user, :categories).each do |category| %>
-          <%= link_to category.name, category_path(category) %>
-        <% end %>
-        </dd>
     </dl>
   </header>
   <section class="description">
@@ -58,5 +46,23 @@
       <a href="#s-1" id="next" class="btn btn-outline"><%= icon("arrow_downward", 48) %></a>
     </nav>    
   </section>
-
-</article
+  <footer>
+    <hr>
+    <dl class="meta">
+      <dt>Tags</dt>
+        <dd>
+        <% @recipe.owner_tags_on(current_user, :tags).each_with_index do |tag, index| %>
+          <%= link_to tag.name, tag_path(tag) %><%= "," if index+1 != @recipe.owner_tags_on(current_user, :tags).length %>
+        <% end %>
+        </dd>
+      <dt>Categorization</dt>
+        <dd>
+        <% @recipe.owner_tags_on(current_user, :categories).each do |category| %>
+          <%= link_to category.name, category_path(category) %>
+        <% end %>
+        </dd>
+    </dl>
+    <hr>
+  </footer>
+</article>
+<%= debug @recipe %>
