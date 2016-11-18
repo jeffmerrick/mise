@@ -7,15 +7,6 @@ gem "coffee-rails", "~> 4.1.0"
 gem "jquery-rails"
 gem "autoprefixer-rails"
 gem "thin", require: false
-
-group :development, :test do
-  gem "byebug"
-end
-group :development do
-  gem "web-console", "~> 2.0"
-  gem "spring"
-end
-
 gem "pg"
 gem "simple_form"
 gem "bourbon"
@@ -27,10 +18,17 @@ gem "devise"
 gem "acts-as-taggable-on"
 gem "selectize-rails"
 
-group :development do
+group :development, :test do
+  gem "byebug"
   gem "better_errors"
   gem "rails_layout"
 end
+
+group :development do
+  gem "web-console", "~> 2.0"
+  gem "spring"
+end
+
 group :production do
   gem "rails_12factor"
 end

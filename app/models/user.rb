@@ -4,14 +4,16 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_one :book
-  has_many :recipes, through: :book
   acts_as_tagger
+
+  belongs_to :book
+  has_many :recipes, through: :book
+
   after_create :generate_book
 
   private
 
   def generate_book
-    create_book
+    create_book(user_id: id)
   end
 end
