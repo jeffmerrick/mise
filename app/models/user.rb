@@ -4,15 +4,11 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  belongs_to :book, autosave: true
-  delegate :recipes, to: :book
+  has_one :book, dependent: :destroy
+  has_many :book_users, dependent: :delete_all
+  has_many :books, through: :book_users
 
-  before_create :create_book
-  after_create :make_book_owner
-
-  private
-
-  def make_book_owner
-    book.update_attributes(user_id: id)
+  after_create do
+    Book.create(user: self)
   end
 end

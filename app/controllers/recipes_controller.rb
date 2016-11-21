@@ -5,11 +5,11 @@ class RecipesController < ApplicationController
   
   # GET /recipes
   def index
-    @recipes = current_user.recipes
+    @recipes = Recipe.where(book: current_user.books)
     @uncategorized_recipes = @recipes.where.not(id: @category_ids)
 
     if params[:search]
-      @recipes = current_user.recipes.search(params[:search]).order("created_at DESC")
+      @recipes = @recipes.search(params[:search]).order("created_at DESC")
     end
 
   end
@@ -20,7 +20,7 @@ class RecipesController < ApplicationController
 
   # GET /recipes/new
   def new
-    @recipe = current_user.recipes.new
+    @recipe = current_user.book.recipes.new
   end
 
   # GET /recipes/1/edit
@@ -29,9 +29,7 @@ class RecipesController < ApplicationController
 
   # POST /recipes
   def create
-    @current_user = current_user
-    @recipe = current_user.recipes.new(recipe_params.merge(user_id: current_user.id))
-
+    @recipe = current_user.book.recipes.new(recipe_params)
     unless @recipe.canonical_url.empty?
       require "open-uri"
       recipe_url = @recipe.canonical_url
