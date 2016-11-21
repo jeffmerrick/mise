@@ -51,23 +51,24 @@ class RecipesController < ApplicationController
         @recipe.total_time = recipe.total_time
         @recipe.yield = recipe.yield
 
-        if params[:tag_list]
-          @current_user.tag(@recipe, on: :tags, with: params[:tag_list], skip_save: true)
-        else
-          ingredient_list = Array.new
-          require "ingreedy"
-          recipe.ingredients.each do |ingredient|
-            begin
-              parsed = Ingreedy.parse(ingredient)
-              ingredient_list.push(parsed.ingredient.to_s.downcase.gsub(/\(.*?\)/, ""))
-            rescue
-              # Skip
-            end
-          end
-          @current_user.tag(@recipe, on: :tags, with: ingredient_list, skip_save: true)
-        end
+        #if params[:tag_list]
+        #  @current_user.tag(@recipe, on: :tags, with: params[:tag_list], skip_save: true)
+        #else
+        #  ingredient_list = Array.new
+        #  require "ingreedy"
+        #  recipe.ingredients.each do |ingredient|
+        #    begin
+        #      parsed = Ingreedy.parse(ingredient)
+        #      ingredient_list.push(parsed.ingredient.to_s.downcase.gsub(/\(.*?\)/, ""))
+        #    rescue
+        #      # Skip
+        #    end
+        #  end
+        #  @current_user.tag(@recipe, on: :tags, with: ingredient_list, skip_save: true)
+        #end
       
-        @current_user.tag(@recipe, on: :categories, with: params[:category_list], skip_save: true)
+        @recipe.book.tag(@recipe, on: :tags, with: params[:tag_list], skip_save: true)
+        @recipe.book.tag(@recipe, on: :categories, with: params[:category_list], skip_save: true)
       rescue
         # Need to figure out a better way
       end
@@ -85,9 +86,8 @@ class RecipesController < ApplicationController
   # PATCH/PUT /recipes/1
   # PATCH/PUT /recipes/1.json
   def update
-    @current_user = current_user
-    @current_user.tag(@recipe, on: :tags, with: params[:recipe][:tag_list], skip_save: true)
-    @current_user.tag(@recipe, on: :categories, with: params[:recipe][:category_list], skip_save: true)
+    @recipe.book.tag(@recipe, on: :tags, with: params[:recipe][:tag_list], skip_save: true)
+    @recipe.book.tag(@recipe, on: :categories, with: params[:recipe][:category_list], skip_save: true)
 
     respond_to do |format|
       if @recipe.update(recipe_params)
@@ -114,9 +114,9 @@ class RecipesController < ApplicationController
     end
 
     def get_taxonomies
-      @categories = ActsAsTaggableOn::Tagging.where(context: "categories", tagger_id: current_user.id, tagger_type: "User").joins(:tag).select("DISTINCT tags.name, tags.taggings_count")
-      @tags = ActsAsTaggableOn::Tagging.where(context: "tags", tagger_id: current_user.id, tagger_type: "User").joins(:tag).select("DISTINCT tags.name, tags.taggings_count")
-      @category_ids = ActsAsTaggableOn::Tagging.where(context: "categories", tagger_id: current_user.id, tagger_type: "User").collect(&:taggable_id).uniq
+      @categories = ActsAsTaggableOn::Tagging.where(context: "categories", tagger_id: current_user.book, tagger_type: "Book").joins(:tag).select("DISTINCT tags.name, tags.taggings_count")
+      @tags = ActsAsTaggableOn::Tagging.where(context: "tags", tagger_id: current_user.book, tagger_type: "Book").joins(:tag).select("DISTINCT tags.name, tags.taggings_count")
+      @category_ids = ActsAsTaggableOn::Tagging.where(context: "categories", tagger_id: current_user.book, tagger_type: "Book").collect(&:taggable_id).uniq
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

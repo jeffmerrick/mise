@@ -4,12 +4,10 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  acts_as_tagger
-
   belongs_to :book, autosave: true
   delegate :recipes, to: :book
 
-  before_save :create_book
+  before_create :create_book
   after_create :make_book_owner
 
   private
