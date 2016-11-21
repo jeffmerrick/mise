@@ -91,8 +91,14 @@ footer.user {
 }
 
 article.recipe {
-  header, footer, .description {
+  header, .description {
     @include span-columns(12);
+    @include omega();
+  }
+
+  footer {
+    @include span-columns(7);
+    @include shift(5);
     @include omega();
   }
 
@@ -121,7 +127,7 @@ article.recipe {
     &.stuck {
       position:fixed;
       top:0;
-      max-height:100vh;
+      max-height:calc(100vh - 61px);
       max-width:468px;
       overflow-y:auto;
     }
@@ -142,7 +148,8 @@ article.recipe {
   }
   .instructions {
     @include span-columns(7);
-    @include omega();
+    @include omega;
+
     li.step {
       font-size:1.25em;
       padding:15px 0 30px 0;

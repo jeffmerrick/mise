@@ -106,7 +106,7 @@ $(function() {
     }
   }
 
-  $(".instructions").on("click", function(){
+  $(".instructions").find("ul").on("click", function(){
     s = window.getSelection();
     var range = s.getRangeAt(0);
     var node = s.anchorNode;
