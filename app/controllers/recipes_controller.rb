@@ -6,12 +6,12 @@ class RecipesController < ApplicationController
   # GET /recipes
   def index
     @recipes = current_user.recipes
+    @uncategorized_recipes = @recipes.where.not(id: @category_ids)
 
     if params[:search]
       @recipes = current_user.recipes.search(params[:search]).order("created_at DESC")
-    else
-      @recipes = current_user.recipes
     end
+
   end
 
   # GET /recipes/1
@@ -116,6 +116,7 @@ class RecipesController < ApplicationController
     def get_taxonomies
       @categories = ActsAsTaggableOn::Tagging.where(context: "categories", tagger_id: current_user.id, tagger_type: "User").joins(:tag).select("DISTINCT tags.name, tags.taggings_count")
       @tags = ActsAsTaggableOn::Tagging.where(context: "tags", tagger_id: current_user.id, tagger_type: "User").joins(:tag).select("DISTINCT tags.name, tags.taggings_count")
+      @category_ids = ActsAsTaggableOn::Tagging.where(context: "categories", tagger_id: current_user.id, tagger_type: "User").collect(&:taggable_id).uniq
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

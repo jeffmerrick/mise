@@ -30,6 +30,18 @@
           </div>
         </li>
       <% end %>
+      <% if @uncategorized_recipes.present?  %>
+        <li class="tab-header-and-content">
+          <a href="#" class="tab-link <%= "is-active" unless @categories.present? %>">Uncategorized (<%= @uncategorized_recipes.count %>)</a>
+          <div class="tab-content">
+            <ul class="recipes">
+            <% @uncategorized_recipes.each do |recipe| %>
+              <%= render recipe %>
+            <% end %>
+            </ul>
+          </div>
+        </li>
+      <% end %>
     </ul>
   <% end %>
 <% elsif params[:search].present? %>
@@ -37,5 +49,3 @@
 <% else %>
   <h1>No recipes created yet</h1>
 <% end %>
-
-<%= debug current_user %>
