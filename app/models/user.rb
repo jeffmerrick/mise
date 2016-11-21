@@ -8,7 +8,19 @@ class User < ActiveRecord::Base
   has_many :book_users, dependent: :delete_all
   has_many :books, through: :book_users
 
+  before_create :generate_token
+
   after_create do
     Book.create(user: self)
   end
+
+  protected
+
+  def generate_token
+    self.invite_token = loop do
+      random_token = SecureRandom.urlsafe_base64(nil, false)
+      break random_token unless User.exists?(invite_token: random_token)
+    end
+  end
+
 end

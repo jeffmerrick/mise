@@ -1,6 +1,11 @@
 <% if user_signed_in? %>
 <footer class="user">
   <hr>
-  <p>Signed in as <%= link_to current_user.email, edit_user_registration_path %> - <%= link_to "Sign out", destroy_user_session_path, :method => :delete %></p>
+  
+  <div class="toolbar">
+    <div class="toolbar-item"><p>Signed in as <%= link_to current_user.email, edit_user_registration_path %> - <%= link_to "Sign out", destroy_user_session_path, :method => :delete %></p> </div>
+    <div class="toolbar-item justify-right"><strong>Invite URL&nbsp;</strong></div> 
+    <div class="toolbar-item"><input type="text" value="<%= "#{root_url}invite/#{current_user.invite_token}" %>"></div>
+  </div>
 </footer>
 <% end %>

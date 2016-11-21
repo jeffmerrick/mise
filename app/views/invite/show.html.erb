@@ -1,0 +1,8 @@
+<div class="text-center">
+<% if @invite_user == current_user %>
+  <h2>This is your invite page, share this with anyone to share all your recipes.</h2>
+<% else %>
+  <h2><%= @invite_user.email %> has invited you to share recipes!</h2>
+  <%= link_to "Confirm Invite!", invite_path(params[:invite_token]), data: {method: "post", confirm: "Are you sure?"}, class: "btn" %>
+<% end %>
+</div>

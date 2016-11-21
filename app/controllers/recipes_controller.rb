@@ -1,7 +1,6 @@
 class RecipesController < ApplicationController
   before_action :set_recipe, only: [:show, :edit, :update, :destroy]
   before_action :get_taxonomies, only: [:index, :new, :edit]
-  before_action :authenticate_user!
   
   # GET /recipes
   def index
@@ -108,7 +107,7 @@ class RecipesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_recipe
-      @recipe = Recipe.find(params[:id])
+      @recipe = Recipe.where(book: current_user.books).find(params[:id])
     end
 
     def get_taxonomies

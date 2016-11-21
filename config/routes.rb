@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   end
 
   root "pages#home"
-  resources :recipes, path: "/"
+  resources :recipes
   resources :tags, only: [:show]
   resources :categories, only: [:show]
+
+  match "/invite/:invite_token", via: [:get, :post], to: "invite#show", as: "invite"
 end

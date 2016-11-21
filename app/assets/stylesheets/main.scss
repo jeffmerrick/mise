@@ -213,6 +213,12 @@ article.recipe {
     &.btn {
       flex:0 0 auto;
     }
+    &.justify-right {
+      justify-content:flex-end;
+    }
+    input {
+      margin:0;
+    }
   }
 }
 
