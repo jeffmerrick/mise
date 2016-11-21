@@ -6,14 +6,15 @@ class User < ActiveRecord::Base
 
   acts_as_tagger
 
-  belongs_to :book
-  has_many :recipes, through: :book
+  belongs_to :book, autosave: true
+  delegate :recipes, to: :book
 
-  before_create :generate_book
+  before_save :create_book
+  after_create :make_book_owner
 
   private
 
-  def generate_book
-    create_book(user_id: id)
+  def make_book_owner
+    book.update_attributes(user_id: id)
   end
 end

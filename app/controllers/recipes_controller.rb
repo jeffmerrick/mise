@@ -30,7 +30,7 @@ class RecipesController < ApplicationController
   # POST /recipes
   def create
     @current_user = current_user
-    @recipe = current_user.recipes.new(recipe_params)
+    @recipe = current_user.recipes.new(recipe_params.merge(user_id: current_user.id))
 
     unless @recipe.canonical_url.empty?
       require "open-uri"
