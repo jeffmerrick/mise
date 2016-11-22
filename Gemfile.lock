@@ -81,6 +81,7 @@ GEM
     execjs (2.7.0)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
+    gravatar_image_tag (1.2.0)
     hangry (0.0.2)
       activesupport
       nokogiri
@@ -201,6 +202,7 @@ DEPENDENCIES
   byebug
   coffee-rails (~> 4.1.0)
   devise
+  gravatar_image_tag
   hangry
   ingreedy
   jquery-rails

@@ -17,6 +17,8 @@
 
 $(function() {
 
+  new Clipboard('.btn-copy');
+
   $('#recipe_category_list, #recipe_tag_list').selectize({
       delimiter: ',',
       persist: false,
@@ -43,6 +45,20 @@ $(function() {
       $(this).addClass('is-active');
     } else {
       event.preventDefault();
+    }
+  });
+
+  $("#user-modal").on("change", function() {
+    if ($(this).is(":checked")) {
+      $("body").addClass("modal-open");
+    } else {
+      $("body").removeClass("modal-open");
+    }
+  });
+
+  $(".modal-fade-screen, .modal-close").on("click", function(e) {
+    if (e.target === this) {
+      $(".modal-state:checked").prop("checked", false).change();
     }
   });
 
@@ -92,6 +108,7 @@ $(function() {
   }
 
   function setAnchors(activeStep) {
+    window.location.hash = "s-"+activeStep;
     if(activeStep == 1) {
       $("#prev").addClass("disabled");
     } else {

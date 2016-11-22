@@ -9,6 +9,7 @@ main {
 
 .page-centered {
   margin-top:30px;
+  margin-bottom:30px;
   @include span-columns(6);
   @include shift(3);
   @include omega();
@@ -43,34 +44,56 @@ footer.user {
   }
 }
 
-.flash:not(:empty) {
-  &#notice {
-    background:$success-color;
+header.index {
+  display:flex;
+  padding-bottom:15px;
+  .header-item {
+    display:flex;
+    flex:1 1 auto;
+    flex-basis:33%;
+    align-items: center;
+    justify-content:center;
+
+    img.logo {
+      width:65px;
+    }
+
+    &:first-child {
+      justify-content:flex-start;
+    }
+    &:last-child {
+      justify-content:flex-end;
+    }
   }
-  &#alert {
-    background:$error-color;
+  .modal {
+    .modal-trigger i {
+      font-size:36px;
+    }
+    .share-form {
+      position:relative;
+      input {
+        font-size:18px;
+      }
+      button {
+        position:absolute;
+        right: 1px;
+        top: 1px;
+        padding: 8px 12px;
+        background:#fff;
+      }
+    }
   }
-  background:#000;
-  padding:15px 30px;
-  color:#fff;
 }
 
-.error_notification, .error {
-  color:$error-color;
-}
-
-.hide {
-  display:none;
-}
-
-.text-helpers {
-  font-size:.85em;
+header.bare {
+  text-align:center;
+  img.logo {
+    width:100px;
+  }
 }
 
 #search-form {
   display:flex;
-  //padding-bottom:30px;
-  padding-right:30px;
   .input-search {
     position:relative;
     flex-grow:1;
@@ -127,7 +150,8 @@ article.recipe {
     &.stuck {
       position:fixed;
       top:0;
-      max-height:calc(100vh - 61px);
+      width:calc(40.29137% - 15px);
+      max-height:100vh;
       max-width:468px;
       overflow-y:auto;
     }
@@ -183,16 +207,17 @@ article.recipe {
   left: 50%;
   transform: translate(-50%, -30%);  
 
-  img {
+  img.logo {
     width:150px;
+    max-height:25vh;
   }
   h1 {
-    font-size:4em;
+    font-size:calc(3em + 3vh);
     margin:.5em 0;
   }
   h2 {
     color:$medium-gray;
-    font-size:2em;
+    font-size:calc(1em + 1vh);
     font-weight:normal;
   }
   .btn {
@@ -213,16 +238,43 @@ article.recipe {
     &.btn {
       flex:0 0 auto;
     }
-    &.justify-right {
-      justify-content:flex-end;
-    }
+    &.justify-right { justify-content:flex-end; }
+    &.justify-left { justify-content:flex-start; }
+    &.justify-center { justify-content:center; }
     input {
       margin:0;
     }
   }
 }
 
-/* Rules for sizing the icon. */
+.flash:not(:empty) {
+  &#notice {
+    background:$success-color;
+  }
+  &#alert {
+    background:$error-color;
+  }
+  background:#000;
+  padding:15px 30px;
+  color:#fff;
+}
+
+.error_notification, .error {
+  color:$error-color;
+}
+
+.hide {
+  display:none;
+}
+
+.text-helpers {
+  font-size:.85em;
+}
+
+img.avatar {
+  border-radius:100%;
+}
+
 .material-icons {
   text-overfow:hidden;
   vertical-align:middle;

@@ -11,7 +11,7 @@ class InviteController < ApplicationController
       current_user.books.each do |book|
         BookUser.create(user: @invite_user, book: book) rescue nil
       end
-      format.html { redirect_to recipes_path, notice: 'Recipes shared!' }
+      redirect_to recipes_path, notice: "Recipes shared!"
     end
   end
 
@@ -20,7 +20,7 @@ class InviteController < ApplicationController
   def find_user
     @invite_user = User.find_by_invite_token(params[:invite_token])
     if @invite_user.nil?
-      format.html { redirect_to root_path, alert: 'Invite not found' }
+      redirect_to root_path, alert: "Invite not found"
     end
   end
 end

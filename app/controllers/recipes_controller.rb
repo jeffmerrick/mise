@@ -5,6 +5,7 @@ class RecipesController < ApplicationController
   # GET /recipes
   def index
     @recipes = Recipe.where(book: current_user.books)
+    @books = current_user.books
     @uncategorized_recipes = @recipes.where.not(id: @category_ids)
 
     if params[:search]

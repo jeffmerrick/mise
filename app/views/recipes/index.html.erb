@@ -1,3 +1,4 @@
+<%= render "shared/index_header" %>
 <div class="toolbar">
     <%= form_tag(recipes_path, :method => "get", id: "search-form", class: "toolbar-item") do %>
       <div class="input-search">
@@ -6,7 +7,6 @@
       </div>
       <%= button_tag icon("search").html_safe, class:"btn-outline" %>
     <% end %>
-    <%= link_to icon('add')+" New Recipe", new_recipe_path, class: "btn toolbar-item" %>
 </div>
 <hr>
 <% if @recipes.present? %>

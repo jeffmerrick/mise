@@ -18,6 +18,7 @@ gem "devise"
 gem "acts-as-taggable-on"
 gem "selectize-rails"
 gem "validate_url"
+gem "gravatar_image_tag"
 
 group :development, :test do
   gem "byebug"
