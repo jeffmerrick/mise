@@ -7,6 +7,13 @@
     <%= gravatar_image_tag(@invite_user.email, class: "avatar") %>
     <h2><%= @invite_user.email %> has invited you to share recipes!</h2>
     <p>If you accept <%= @invite_user.email %> will get full access to view, edit and add to your recipes. You'll get full access to theirs as well.</p>
-    <%= link_to "Accept invite and share recipes", invite_path(params[:invite_token]), data: {method: "post", confirm: "Are you sure?"}, class: "btn" %>
+    <% if user_signed_in? %>
+      <%= link_to "Accept invite and share recipes", invite_path(params[:invite_token]), data: {method: "post", confirm: "Are you sure?"}, class: "btn btn-block" %>
+    <% else %>
+      <br>
+      <%= link_to "Already have an account? Log in", new_user_session_path(redirect_to: invite_path(params[:invite_token])), class: "btn btn-outline btn-block" %><br><br>
+      <%= link_to "Need an account? Sign up", new_user_registration_path(redirect_to:invite_path(params[:invite_token])), class: "btn btn-outline btn-block" %>
+    <% end %>
   <% end %>
 </div>
+
