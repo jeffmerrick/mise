@@ -1,4 +1,6 @@
+<% unless @recipe.canonical_url.empty? %>
 <a href="<%= @recipe.canonical_url %>" id="show-source" class="pull-right"><%= icon("chrome_reader_mode", 36) %> <span>Show source website</span></a>
+<% end %>
 <h1>Editing Recipe</h1>
 <%= render 'form' %>
 <hr>

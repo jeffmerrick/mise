@@ -48,4 +48,8 @@
     border-color:transparent;
     color:$action-color;
   }
+  &.btn-block {
+    width:100%;
+    text-align:center;
+  }
 }

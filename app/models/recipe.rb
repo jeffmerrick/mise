@@ -2,7 +2,8 @@ class Recipe < ActiveRecord::Base
   belongs_to :user
   belongs_to :book
   acts_as_taggable_on :tags, :categories
-
+  validates :canonical_url, :url => {:allow_blank => true}
+  
   before_create do
     self.user = book.user
   end  

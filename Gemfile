@@ -17,6 +17,7 @@ gem "ingreedy"
 gem "devise"
 gem "acts-as-taggable-on"
 gem "selectize-rails"
+gem "validate_url"
 
 group :development, :test do
   gem "byebug"

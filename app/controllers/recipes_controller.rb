@@ -71,6 +71,10 @@ class RecipesController < ApplicationController
       end
     end
 
+    if @recipe.name.blank?
+      @recipe.name = "New Untitled Recipe"
+    end
+
     respond_to do |format|
       if @recipe.save
         format.html { redirect_to edit_recipe_path(@recipe), notice: 'Recipe was successfully created.' }
