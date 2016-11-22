@@ -29,11 +29,13 @@
                 <%= icon("content_copy", 18) %>
               </button>
             </div>
-            <hr>
-            <strong>You are currently collaborating with:</strong>
-            <% @books.each do |book| %>
-              <% if book.user != current_user %>
-                <%= book.user.email %>
+            <% if @books.count > 1 %>
+              <hr>            
+              <strong>You are currently collaborating with:</strong>
+              <% @books.each do |book| %>
+                <% if book.user != current_user %>
+                  <%= book.user.email %>
+                <% end %>
               <% end %>
             <% end %>
         </div>

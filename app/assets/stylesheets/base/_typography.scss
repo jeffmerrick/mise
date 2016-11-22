@@ -34,7 +34,7 @@ p {
 
 a {
   color: $link-color;
-  text-decoration: none!important;
+  text-decoration: none;
   transition: color $base-duration $base-timing;
   font-weight:bold;
   &:active,

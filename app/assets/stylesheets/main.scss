@@ -216,12 +216,19 @@ article.recipe {
     margin:.5em 0;
   }
   h2 {
-    color:$medium-gray;
+    color:$dark-gray;
     font-size:calc(1em + 1vh);
     font-weight:normal;
   }
   .btn {
     font-size:1.5em;
+  }
+  p {
+    margin:3em 0 1.5em 0;
+    color:$medium-gray;
+    a {
+      color:$medium-gray;
+    }
   }
 }
 
