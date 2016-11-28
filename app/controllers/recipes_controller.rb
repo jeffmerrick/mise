@@ -86,7 +86,6 @@ class RecipesController < ApplicationController
   end
 
   # PATCH/PUT /recipes/1
-  # PATCH/PUT /recipes/1.json
   def update
     @recipe.book.tag(@recipe, on: :tags, with: params[:recipe][:tag_list], skip_save: true)
     @recipe.book.tag(@recipe, on: :categories, with: params[:recipe][:category_list], skip_save: true)
@@ -101,7 +100,6 @@ class RecipesController < ApplicationController
   end
 
   # DELETE /recipes/1
-  # DELETE /recipes/1.json
   def destroy
     @recipe.destroy
     respond_to do |format|

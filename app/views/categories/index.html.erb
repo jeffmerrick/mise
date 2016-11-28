@@ -1,0 +1,10 @@
+<h1>All categories</h1>
+<ul class="recipes">
+  <ul class="listing">
+  <% @categories.each do |category| %>
+  <li>
+    <h1><%= link_to category.name, category_path(category) %> <span>(<%= category.taggings_count %>)</span> <small><%= link_to "Edit", edit_category_path(category) %></small></h1>
+  </li>
+  <% end %>
+  </ul>
+</ul>

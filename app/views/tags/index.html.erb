@@ -1,0 +1,10 @@
+<h1>All tags</h1>
+<ul class="recipes">
+  <ul class="listing">
+  <% @tags.each do |tag| %>
+  <li>
+    <h1><%= link_to tag.name, tag_path(tag) %> <span>(<%= tag.taggings_count %>)</span> <small><%= link_to "Edit", edit_tag_path(tag) %></small></h1>
+  </li>
+  <% end %>
+  </ul>
+</ul>

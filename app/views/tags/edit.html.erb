@@ -1,0 +1,13 @@
+<div class="page-centered">
+  <h1><%= link_to icon("arrow_back").html_safe, :back, class: "btn btn-outline" %> Editing tag <em><%= @tag.name %></em></h1>
+  <%= simple_form_for(@tag, as: "tag", url: tag_path(@tag)) do |f| %>
+    <%= f.error_notification %>
+
+    <div class="form-inputs">
+      <%= f.input :name %>
+    </div>
+    <div class="form-actions">
+      <%= f.button :submit %>
+    </div>
+  <% end %>
+</div>
