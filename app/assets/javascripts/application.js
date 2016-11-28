@@ -30,6 +30,11 @@ $(function() {
       }
   });
 
+  $("#importer-examples").find("a").on("click", function(event){
+    event.preventDefault();
+    $("#recipe_canonical_url").val($(this).attr("href"));
+  });
+
   $('.tabs').each(function(index) {
     $(this).children('li').first().children('a').addClass('is-active').next().addClass('is-open').show();
   });

@@ -41,6 +41,7 @@ footer.user {
     position:fixed;
     right:0;
     border:none;
+    background:$light-gray;
   }
 }
 
@@ -110,6 +111,16 @@ header.bare {
       color:$medium-gray;
       text-decoration:none;
     }
+  }
+}
+
+#importer-examples {
+  background:lighten($light-gray, 10%);
+  border-radius:$base-border-radius;
+  padding:15px;
+
+  strong, a {
+    display:block;
   }
 }
 

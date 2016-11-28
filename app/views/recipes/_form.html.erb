@@ -3,6 +3,14 @@
 
   <div class="form-inputs">
     <%= f.input :canonical_url, label: @recipe.new_record? ? icon("cloud_download") + " Import URL " + link_to('...or enter manually', '#form-details', data: {toggle: 'collapse'}) : "URL" %>
+    <% if @recipe.new_record? && current_user.book.recipes.count == 0 %>
+      <div id="importer-examples">
+        <strong>Try out the importer with one of these recipes:</strong>
+        <a href="http://www.seriouseats.com/recipes/2016/02/penne-pasta-arrabbiata-sauce-recipe.html"><em>Penne With Hot-As-You-Dare Arrabbiata Sauce Recipe</em> from Serious Eats</a>
+        <a href="http://www.simplyrecipes.com/recipes/spaghetti_alla_carbonara/"><em>Spaghetti Pasta Carbonara</em> from Simply Recipes</a>
+        <a href="http://www.epicurious.com/recipes/food/views/pasta-with-roasted-romanesco-and-capers"><em>Pasta With Roasted Romanesco and Capers</em> from Epicurious</a>
+      </div>
+    <% end %>
     <div id="form-details" class="<%= "hide" if @recipe.new_record? %>">
       <%= f.input :name %>
       <%= render "text_helper" %>
