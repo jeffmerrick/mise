@@ -58,7 +58,7 @@
 
   .tab-content {
     display: none;
-    padding: $base-spacing $gutter;
+    padding: $base-spacing 0;
     width: 100%;
 
     @include media($tab-mode) {

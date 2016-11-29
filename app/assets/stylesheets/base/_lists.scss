@@ -17,3 +17,17 @@ dt {
 dd {
   margin: 0;
 }
+
+ul.recipes {
+  li {
+    display:flex;
+    justify-content:space-between;
+    a.pin-toggle {
+      color:$light-gray;
+      
+      &.active {
+        color:$action-color;
+      }
+    }
+  }
+}

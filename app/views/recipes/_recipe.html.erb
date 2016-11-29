@@ -1,1 +1,4 @@
-<li><h1><%= link_to recipe.name, recipe %></h1></li>
+<li>
+  <h1><%= link_to recipe.name, recipe %></h1>
+  <%= link_to icon("pin"), toggle_pin_recipe_path(recipe), data: {method: "post"}, class:"pin-toggle #{recipe.pinned? ? "active" : nil }" %>
+</li>

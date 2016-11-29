@@ -2,13 +2,23 @@
 <div class="toolbar">
     <%= form_tag(recipes_path, :method => "get", id: "search-form", class: "toolbar-item") do %>
       <div class="input-search">
-        <%= link_to icon("clear").html_safe, "/", class: "clear-search" if params[:search].present? %>
+        <%= link_to icon("close").html_safe, "/", class: "clear-search" if params[:search].present? %>
         <%= text_field_tag :search, params[:search], placeholder: "Search recipes" %>
       </div>
-      <%= button_tag icon("search").html_safe, class:"btn-outline" %>
+      <%= button_tag icon("magnify").html_safe, class:"btn-outline" %>
     <% end %>
 </div>
 <hr>
+
+<% if @pinned_recipes.present? %>
+  <ul class="recipes">
+  <% @pinned_recipes.each do |recipe| %>
+    <%= render recipe %>
+  <% end %>
+  </ul>
+<% end %>
+
+
 <% if @recipes.present? %>
   <% if params[:search].present? %>
       <ul class="recipes">

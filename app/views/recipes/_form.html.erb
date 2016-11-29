@@ -2,7 +2,7 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :canonical_url, label: @recipe.new_record? ? icon("cloud_download") + " Import URL " + link_to('...or enter manually', '#form-details', data: {toggle: 'collapse'}) : "URL" %>
+    <%= f.input :canonical_url, label: @recipe.new_record? ? icon("cloud-download") + " Import URL " + link_to('...or enter manually', '#form-details', data: {toggle: 'collapse'}) : "URL" %>
     <% if @recipe.new_record? && current_user.book.recipes.count == 0 %>
       <div id="importer-examples">
         <strong>Try out the importer with one of these recipes:</strong>

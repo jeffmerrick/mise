@@ -1,10 +1,11 @@
 <div class="toolbar">
   <span class="toolbar-item">
-    <%= link_to icon("arrow_back").html_safe, recipes_path, class: "btn btn-outline" %>
+    <%= link_to icon("arrow-left").html_safe, recipes_path, class: "btn btn-outline" %>
   </span>
   <span class="toolbar-item">
-    <%= link_to icon("edit") + " Edit", edit_recipe_path(@recipe), class: "btn btn-link" %>
-    <%= link_to icon("link") + "Source", @recipe.canonical_url, target: "_blank", class: "btn btn-link" %>
+     <%= link_to icon("pin#{@recipe.pinned? ? "-off" : nil }") + (@recipe.pinned? ? "Unpin" : "Pin"), toggle_pin_recipe_path(@recipe), data: {method: "post"}, class: "btn btn-link" %>
+    <%= link_to icon("pencil") + " Edit", edit_recipe_path(@recipe), class: "btn btn-link" %>
+    <%= link_to icon("open-in-new") + "Source", @recipe.canonical_url, target: "_blank", class: "btn btn-link" %>
   </span>
 </div>
 <hr>
@@ -42,8 +43,8 @@
     <% end %>
     </ul>
     <nav class="pager">
-      <a href="#" id="prev" class="btn btn-outline disabled"><%= icon("arrow_upward", 48) %></a>
-      <a href="#s-1" id="next" class="btn btn-outline"><%= icon("arrow_downward", 48) %></a>
+      <a href="#" id="prev" class="btn btn-outline disabled"><%= icon("arrow-up", 48) %></a>
+      <a href="#s-1" id="next" class="btn btn-outline"><%= icon("arrow-down", 48) %></a>
     </nav>    
   </section>
 

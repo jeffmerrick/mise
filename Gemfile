@@ -24,6 +24,7 @@ group :development, :test do
   gem "byebug"
   gem "better_errors"
   gem "rails_layout"
+  gem "dotenv-rails"
 end
 
 group :development do

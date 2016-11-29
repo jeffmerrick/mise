@@ -1,16 +1,16 @@
 <% unless @recipe.canonical_url.empty? %>
-<a href="<%= @recipe.canonical_url %>" id="show-source" class="pull-right"><%= icon("chrome_reader_mode", 36) %> <span>Show source website</span></a>
+<a href="<%= @recipe.canonical_url %>" id="show-source" class="pull-right"><%= icon("book-open", 36) %> <span>Show source website</span></a>
 <% end %>
 <h1>Editing Recipe</h1>
 <%= render 'form' %>
 <hr>
 <div class="toolbar">
   <span class="toolbar-item">
-    <%= link_to icon("arrow_back").html_safe, :back, class: "btn btn-outline" %>
+    <%= link_to icon("arrow-left").html_safe, :back, class: "btn btn-outline" %>
   </span>
   <span class="toolbar-item">
     <%= link_to icon("delete") + " Delete",  @recipe , method: :delete, data: { confirm: 'Are you sure you want to delete this recipe?' }, class: "btn btn-link" %>
-    <%= link_to icon("subject") + "View", @recipe, class: "btn btn-link" %>
+    <%= link_to icon("format-align-left") + "View", @recipe, class: "btn btn-link" %>
   </span>
 </div>
 <br>

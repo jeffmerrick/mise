@@ -1,5 +1,5 @@
 class RecipesController < ApplicationController
-  before_action :set_recipe, only: [:show, :edit, :update, :destroy]
+  before_action :set_recipe, only: [:show, :edit, :update, :destroy, :toggle_pin]
   before_action :get_taxonomies, only: [:index, :new, :edit]
   
   # GET /recipes
@@ -7,6 +7,7 @@ class RecipesController < ApplicationController
     @recipes = Recipe.where(book: current_user.books)
     @books = current_user.books
     @uncategorized_recipes = @recipes.where.not(id: @category_ids)
+    @pinned_recipes = @recipes.where.not(pinned: false)
 
     if params[:search]
       @recipes = @recipes.search(params[:search]).order("created_at DESC")
@@ -99,6 +100,13 @@ class RecipesController < ApplicationController
   def destroy
     @recipe.destroy
     redirect_to recipes_url, notice: 'Recipe was successfully deleted.'
+
+  end
+
+  # POST /recipes/1/toggle_pin
+  def toggle_pin
+    @recipe.update(pinned: !@recipe.pinned)
+    redirect_to :back, notice: "Recipe #{@recipe.pinned? ? "pinned" : "unpinned"}"
   end
 
   private

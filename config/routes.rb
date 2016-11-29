@@ -6,7 +6,11 @@ Rails.application.routes.draw do
   end
 
   root "pages#home"
-  resources :recipes
+  resources :recipes do
+    member do
+      post "toggle_pin", to: "recipes#toggle_pin"
+    end
+  end
   resources :tags
   resources :categories
 

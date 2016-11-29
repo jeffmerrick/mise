@@ -1,6 +1,6 @@
 <header class="index">
   <div class="header-item">
-    <%= link_to icon("add")+" New Recipe", new_recipe_path, class: "btn toolbar-item" %>
+    <%= link_to icon("plus")+" New Recipe", new_recipe_path, class: "btn toolbar-item" %>
   </div>
   <div class="header-item">
     <%= link_to image_tag("mise-logo.svg", class:"logo"), root_path %>
@@ -8,7 +8,7 @@
   <div class="header-item">
     <div class="modal">
       <label for="user-modal">
-        <div class="modal-trigger btn btn-link"><%= icon("account_circle") %></div>
+        <div class="modal-trigger btn btn-link"><%= icon("account-circle") %></div>
       </label>
       <input class="modal-state" id="user-modal" type="checkbox" />
       <div class="modal-fade-screen">
@@ -18,7 +18,7 @@
             <%= gravatar_image_tag(current_user.email, class: "avatar") %>
             <h2><%= current_user.email %></h2>
             <%= link_to icon("settings")+" Settings", edit_user_registration_path, class: "btn btn-link" %>  
-            <%= link_to icon("exit_to_app")+" Sign out", destroy_user_session_path, method: :delete, class: "btn btn-link" %>
+            <%= link_to icon("exit-to-app")+" Sign out", destroy_user_session_path, method: :delete, class: "btn btn-link" %>
             </div>
             <hr>
             <strong>Collaborate</strong>
@@ -26,7 +26,7 @@
             <div class="share-form">
               <input id="share" type="text" value="<%= "#{root_url}invite/#{current_user.invite_token}" %>">
               <button class="btn btn-link btn-copy" data-clipboard-target="#share">
-                <%= icon("content_copy", 18) %>
+                <%= icon("content-copy", 18) %>
               </button>
             </div>
             <% if current_user.books.count > 1 %>

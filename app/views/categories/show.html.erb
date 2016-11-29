@@ -1,4 +1,4 @@
-<h1><%= link_to icon("arrow_back").html_safe, :back, class: "btn btn-outline" %> Recipes in <em><%= @category.name %></em></h1>
+<h1><%= link_to icon("arrow-left").html_safe, :back, class: "btn btn-outline" %> Recipes in <em><%= @category.name %></em></h1>
 <ul class="recipes">
   <%= render @recipes %>
 </ul>
