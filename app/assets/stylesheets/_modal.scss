@@ -90,7 +90,8 @@
     position: relative;
     transition: opacity 0.25s ease;
     width: 95%;
-
+    max-width:650px;
+    
     @include media($medium-screen) {
       padding: $modal-padding;
       width: 60%;
