@@ -3,7 +3,6 @@ class InviteController < ApplicationController
   before_action :find_user
 
   def show
-
     if request.post?
       @invite_user.books.each do |book|
         BookUser.create(user: current_user, book: book) rescue nil

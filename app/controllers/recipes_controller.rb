@@ -76,13 +76,11 @@ class RecipesController < ApplicationController
       @recipe.name = "New Untitled Recipe"
     end
 
-    respond_to do |format|
       if @recipe.save
-        format.html { redirect_to edit_recipe_path(@recipe), notice: 'Recipe was successfully created.' }
+        redirect_to edit_recipe_path(@recipe), notice: 'Recipe was successfully created.'
       else
-        format.html { render :new }
+        render :new
       end
-    end
   end
 
   # PATCH/PUT /recipes/1
@@ -90,21 +88,17 @@ class RecipesController < ApplicationController
     @recipe.book.tag(@recipe, on: :tags, with: params[:recipe][:tag_list], skip_save: true)
     @recipe.book.tag(@recipe, on: :categories, with: params[:recipe][:category_list], skip_save: true)
 
-    respond_to do |format|
       if @recipe.update(recipe_params)
-        format.html { redirect_to @recipe, notice: 'Recipe was successfully updated.' }
+        redirect_to @recipe, notice: 'Recipe was successfully updated.'
       else
-        format.html { render :edit }
+        render :edit
       end
-    end
   end
 
   # DELETE /recipes/1
   def destroy
     @recipe.destroy
-    respond_to do |format|
-      format.html { redirect_to recipes_url, notice: 'Recipe was successfully deleted.' }
-    end
+    redirect_to recipes_url, notice: 'Recipe was successfully deleted.'
   end
 
   private
