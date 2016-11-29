@@ -3,7 +3,7 @@ class CategoriesController < ApplicationController
 
   # GET /tags
   def index
-    @categories = ActsAsTaggableOn::Tagging.where(context: "categories", tagger: current_user.books).joins(:tag).select("DISTINCT tags.name, tags.taggings_count, tags.id")
+    @categories = ActsAsTaggableOn::Tagging.where(context: "categories", tagger: current_user.books).joins(:tag).select("DISTINCT tags.name, tags.taggings_count, tags.id").order("tags.name ASC")
   end
 
   # GET /tags/1

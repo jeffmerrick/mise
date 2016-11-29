@@ -116,7 +116,7 @@ class RecipesController < ApplicationController
     def get_taxonomies
       @categories = ActsAsTaggableOn::Tagging.where(context: "categories", tagger_id: current_user.books, tagger_type: "Book").joins(:tag).select("DISTINCT tags.name, tags.taggings_count")
       @tags = ActsAsTaggableOn::Tagging.where(context: "tags", tagger_id: current_user.books, tagger_type: "Book").joins(:tag).select("DISTINCT tags.name, tags.taggings_count")
-      @category_ids = ActsAsTaggableOn::Tagging.where(context: "categories", tagger_id: current_user.book, tagger_type: "Book").collect(&:taggable_id).uniq
+      @category_ids = ActsAsTaggableOn::Tagging.where(context: "categories", tagger_id: current_user.books, tagger_type: "Book").collect(&:taggable_id).uniq
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
