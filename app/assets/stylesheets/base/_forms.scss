@@ -15,6 +15,9 @@ label {
   display: block;
   font-weight: 600;
   margin-bottom: $small-spacing / 2;
+  > a {
+    font-size:smaller;
+  }
 }
 
 input,
@@ -45,6 +48,9 @@ select[multiple] {
     border-color: $action-color;
     box-shadow: $form-box-shadow-focus;
     outline: none;
+    + span.hint {
+      color:$action-color;
+    }
   }
 
   &:disabled {

@@ -102,9 +102,15 @@ $(function() {
   $(".remove-line-breaks").on("click", function(){
     var $textarea = $(this).parent().next(".text").find("textarea");
     var instructions = $textarea.val();
-    $textarea.val(instructions.replace(/(\r\n|\n|\r)/gm,""));
+    $textarea.val(instructions.replace(/(\r\n|\n|\r)(\r\n|\n|\r)/gm,""));
   });
 
+
+  $(".remove-step-numbers").on("click", function(){
+    var $textarea = $(this).parent().next(".text").find("textarea");
+    var instructions = $textarea.val();
+    $textarea.val(instructions.replace(/\d+\./g,""));
+  });
 
   if($(".ingredients").length) {
     var sticky = new Waypoint.Sticky({

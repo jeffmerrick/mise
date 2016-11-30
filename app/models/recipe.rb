@@ -9,7 +9,6 @@ class Recipe < ActiveRecord::Base
   end  
 
   def self.search(search)
-    where("description ILIKE ? OR name ILIKE ?", "%#{search}%", "%#{search}%") 
+    where("description ILIKE ? OR name ILIKE ? OR ingredients ILIKE ?", "%#{search}%", "%#{search}%", "%#{search}%") 
   end
-
 end

@@ -10,15 +10,6 @@
 </div>
 <hr>
 
-<% if @pinned_recipes.present? %>
-  <ul class="recipes">
-  <% @pinned_recipes.each do |recipe| %>
-    <%= render recipe %>
-  <% end %>
-  </ul>
-<% end %>
-
-
 <% if @recipes.present? %>
   <% if params[:search].present? %>
       <ul class="recipes">
@@ -27,6 +18,13 @@
       <% end %>
       </ul>
   <% else %>
+  <% if @pinned_recipes.present? %>
+    <ul class="recipes">
+    <% @pinned_recipes.each do |recipe| %>
+      <%= render recipe %>
+    <% end %>
+    </ul>
+  <% end %>  
     <ul class="tabs">
       <% @categories.each_with_index do |category, index| %>
         <li class="tab-header-and-content">
