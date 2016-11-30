@@ -12,10 +12,19 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
+//= require turbolinks
 //= require selectize
+//= require nprogress
+//= require nprogress-turbolinks
+//= require_tree .
 
-$(function() {
+$(document).on("turbolinks:click", function (event) {
+  if (event.target.getAttribute("href").charAt(0) === "#") {
+    return event.preventDefault()
+  }
+})
+
+$(document).on("turbolinks:load", function() {
 
   new Clipboard('.btn-copy');
 
@@ -119,7 +128,7 @@ $(function() {
   }
 
   function setAnchors(activeStep) {
-    window.location.hash = "s-"+activeStep;
+    //window.location.hash = "s-"+activeStep;
     if(activeStep == 1) {
       $("#prev").addClass("disabled");
     } else {
@@ -163,6 +172,12 @@ $(function() {
       accuracy: "exact"
     });
   });  
+
+  $(".pager").find("a").on("click", function(e){
+    id = $(this).attr("href");
+    e.preventDefault();
+    $('html,body').animate({scrollTop: $(id).offset().top},"fast");
+  });
 
   activeStep = 1;
   totalSteps = $(".step").length;

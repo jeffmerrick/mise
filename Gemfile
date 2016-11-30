@@ -19,6 +19,8 @@ gem "acts-as-taggable-on"
 gem "selectize-rails"
 gem "validate_url"
 gem "gravatar_image_tag"
+gem "turbolinks"
+gem "nprogress-rails"
 
 group :development, :test do
   gem "byebug"

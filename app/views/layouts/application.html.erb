@@ -28,8 +28,8 @@
   <link href="https://cdn.materialdesignicons.com/1.7.22/css/materialdesignicons.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Karla:400,400i,700,700i" rel="stylesheet">
 
-  <%= stylesheet_link_tag    'application', media: 'all' %>
-  <%= javascript_include_tag 'application' %>
+  <%= stylesheet_link_tag    "application", media: "all", data: { turbolinks_track: "reload" } %>
+  <%= javascript_include_tag "application", data: { turbolinks_track: "reload" } %>
   <%= csrf_meta_tags %>
 </head>
 <body>

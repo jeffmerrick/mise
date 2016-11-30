@@ -112,6 +112,7 @@ GEM
     nokogiri (1.6.8)
       mini_portile2 (~> 2.1.0)
       pkg-config (~> 1.1.7)
+    nprogress-rails (0.2.0.2)
     orm_adapter (0.5.0)
     parslet (1.7.1)
       blankslate (>= 2.0, <= 4.0)
@@ -179,6 +180,9 @@ GEM
     thor (0.19.1)
     thread_safe (0.3.5)
     tilt (2.0.5)
+    turbolinks (5.0.1)
+      turbolinks-source (~> 5)
+    turbolinks-source (5.0.0)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
     uglifier (3.0.2)
@@ -212,6 +216,7 @@ DEPENDENCIES
   ingreedy
   jquery-rails
   neat
+  nprogress-rails
   pg
   rails (= 4.2.6)
   rails_12factor
@@ -221,6 +226,7 @@ DEPENDENCIES
   simple_form
   spring
   thin
+  turbolinks
   uglifier (>= 1.3.0)
   validate_url
   web-console (~> 2.0)

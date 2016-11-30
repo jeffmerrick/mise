@@ -49,3 +49,8 @@ $form-box-shadow-focus: none;
 // Animations
 $base-duration: 0ms;
 $base-timing: linear;
+
+// Progress Bar
+$nprogress-color: $action-color;
+$nprogress-height: 3px;
+$nprogress-zindex: 10100;
