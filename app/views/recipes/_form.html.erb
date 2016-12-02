@@ -19,9 +19,9 @@
       <%= text_helpers(["step-numbers", "double-spaces", "line-breaks"]) %>
       <%= f.input :instructions, input_html: {rows: 20}, hint: "Use double line breaks to create separate steps. Remove step numbers." %>
       <%= f.input :cook_time %>    
-      <%= f.input :author %>    
       <%= f.input :prep_time %>
       <%= f.input :total_time %>
+      <%= f.input :author %>          
       <%= f.input :yield %>
       <%= f.input :tag_list, label: ("Tags #{link_to("Manage", tags_path, class: "pull-right")}").html_safe, hint: "As many as you want like 'Beef' or 'Slow Cooker'", as: "select", input_html: { multiple: true }, selected: @recipe.owner_tags_on(@recipe.book, :tags), collection: @tags.try(:map) {|x| x[:name]} %>
       <%= f.input :category_list, label: ("Categories #{link_to("Manage", categories_path, class: "pull-right")}").html_safe, hint: "Typically belongs to one or two like 'Dinner' or 'Appetizers'", as: "select", input_html: { multiple: true }, selected: @recipe.owner_tags_on(@recipe.book, :categories), collection: @categories.try(:map) {|x| x[:name]} %>
