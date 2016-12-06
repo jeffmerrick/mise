@@ -30,6 +30,11 @@ textarea {
 
 .selectize-input {
   box-shadow: none;
+
+  &:hover {
+    border-color: shade($base-border-color, 20%);
+  }
+
   &.focus {
     border-color: $action-color;
     box-shadow: $form-box-shadow-focus;
