@@ -28,6 +28,22 @@ textarea {
   font-size: $base-font-size;
 }
 
+.selectize-input {
+  box-shadow: none;
+  &.focus {
+    border-color: $action-color;
+    box-shadow: $form-box-shadow-focus;
+    outline: none;
+    + span.hint {
+      color:$action-color;
+    }    
+  }
+}
+
+.selectize-dropdown {
+  border-color:$action-color;
+}
+
 #{$all-text-inputs},
 select[multiple] {
   background-color: $base-background-color;

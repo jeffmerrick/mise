@@ -50,6 +50,7 @@ class RecipesController < ApplicationController
         @recipe.total_time = recipe.total_time
         @recipe.yield = recipe.yield
 
+        #Automatically add ingredients as tags
         #if params[:tag_list]
         #  @current_user.tag(@recipe, on: :tags, with: params[:tag_list], skip_save: true)
         #else
@@ -65,23 +66,23 @@ class RecipesController < ApplicationController
         #  end
         #  @current_user.tag(@recipe, on: :tags, with: ingredient_list, skip_save: true)
         #end
-      
-        @recipe.book.tag(@recipe, on: :tags, with: params[:tag_list], skip_save: true)
-        @recipe.book.tag(@recipe, on: :categories, with: params[:category_list], skip_save: true)
       rescue
         # Need to figure out a better way
       end
     end
 
+    @recipe.book.tag(@recipe, on: :tags, with: params[:recipe][:tag_list], skip_save: true)
+    @recipe.book.tag(@recipe, on: :categories, with: params[:recipe][:category_list], skip_save: true)
+
     if @recipe.name.blank?
       @recipe.name = "New Untitled Recipe"
     end
 
-      if @recipe.save
-        redirect_to edit_recipe_path(@recipe), notice: 'Recipe was successfully created.'
-      else
-        render :new
-      end
+    if @recipe.save
+      redirect_to edit_recipe_path(@recipe), notice: 'Recipe was successfully created.'
+    else
+      render :new
+    end
   end
 
   # PATCH/PUT /recipes/1
