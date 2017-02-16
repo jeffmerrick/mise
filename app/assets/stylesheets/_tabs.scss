@@ -16,6 +16,25 @@
   line-height: 1.5;
   padding: 0;
 
+  @include media($tab-mode) {
+    overflow-x: scroll;
+    overflow-y: visible;
+    white-space: nowrap;    
+
+    &:before {
+      content:"";
+      background:linear-gradient(to right, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%); ;
+      display:block;
+      height:50px;
+      position:fixed;
+      width:calc(25% - 80px);
+      max-width:438px;
+      top:224px;
+      right:30px;
+    }
+
+  }
+
   .tab-header-and-content {
     list-style: none;
 
@@ -52,6 +71,8 @@
         border: $tab-border;
         border-bottom-color: $tab-active-background;
         margin-bottom: -1px;
+        position:relative;
+        z-index:1;
       }
     }
   }
@@ -60,10 +81,16 @@
     display: none;
     padding: $base-spacing 0;
     width: 100%;
+    position:static;
 
     @include media($tab-mode) {
+      position:absolute;
       border-top: $tab-border;
       float: left;
+      max-width: calc(100vw - 60px);
+      z-index:0;
+      margin-top:-1px;
+      white-space:normal;
     }
   }
 }
