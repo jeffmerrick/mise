@@ -32,7 +32,7 @@
   <%= javascript_include_tag "application", data: { turbolinks_track: "reload" } %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body class="<%= yield (:body_class) %>">
   <main>
     <p id="notice" class="flash"><%= notice %></p>
     <p id="alert" class="flash"><%= alert %></p>

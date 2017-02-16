@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   end
 
   root "pages#home"
+  get "terms", to: "pages#terms"
+
+
   resources :recipes do
     member do
       post "toggle_pin", to: "recipes#toggle_pin"
