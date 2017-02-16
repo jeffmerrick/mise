@@ -168,6 +168,7 @@ article.recipe {
       max-width:468px;
       overflow-y:auto;
       padding-bottom:100px;
+
       &:after {
         content:"";
         background:linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%); ;
@@ -231,7 +232,11 @@ article.recipe {
   top: 30%;
   left: 50%;
   transform: translate(-50%, -30%);  
-
+  width:100%;
+  
+  @media(min-width:720px) { 
+    width:auto;
+  }
   img.logo {
     width:150px;
     max-height:25vh;
@@ -263,6 +268,14 @@ article.recipe {
     display:flex;
     flex:1 1 auto;
     align-items: center;
+
+    
+      a span {
+        display:none;
+        @include media($medium-screen) {
+          display:inline;
+        }
+      }
     &:last-child {
       justify-content: flex-end;
       text-align:right;

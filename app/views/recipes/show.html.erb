@@ -3,9 +3,9 @@
     <%= link_to icon("arrow-left").html_safe, recipes_path, class: "btn btn-outline" %>
   </span>
   <span class="toolbar-item">
-     <%= link_to icon("pin#{@recipe.pinned? ? "-off" : nil }") + (@recipe.pinned? ? "Unpin" : "Pin"), toggle_pin_recipe_path(@recipe), data: {method: "post"}, class: "btn btn-link" %>
-    <%= link_to icon("pencil") + " Edit", edit_recipe_path(@recipe), class: "btn btn-link" %>
-    <%= link_to icon("open-in-new") + "Source", @recipe.canonical_url, target: "_blank", class: "btn btn-link" %>
+     <%= link_to icon("pin#{@recipe.pinned? ? "-off" : nil }") + (@recipe.pinned? ? "<span> Unpin</span>".html_safe : "<span> Pin</span>".html_safe), toggle_pin_recipe_path(@recipe), data: {method: "post"}, class: "btn btn-link" %>
+    <%= link_to icon("pencil") + "<span> Edit</span>".html_safe, edit_recipe_path(@recipe), class: "btn btn-link" %>
+    <%= link_to icon("open-in-new") + "<span> Source</span>".html_safe, @recipe.canonical_url, target: "_blank", class: "btn btn-link" %>
   </span>
 </div>
 <hr>

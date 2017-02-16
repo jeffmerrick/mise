@@ -12,12 +12,16 @@
   -webkit-font-smoothing: antialiased;
   font-weight: bold;
   line-height: 1;
-  padding: $small-spacing $base-spacing;
+  padding: $small-spacing / 2 $base-spacing / 2;
   text-decoration: none;
   transition: background-color $base-duration $base-timing;
   user-select: none;
   vertical-align: middle;
   white-space: nowrap;
+
+  @include media($small-screen) {
+    padding: $small-spacing $base-spacing;
+  }
 
   &:hover,
   &:focus {
